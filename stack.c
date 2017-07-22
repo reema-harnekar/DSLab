@@ -6,15 +6,15 @@ int isfull()
 { //returns 1 if stack is full else -1
 	if(top==(MAXSIZE-1))
 		return 1;
-	else 
+	else
 		return-1;
 }
 
-int isempty() 
+int isempty()
 {//returns 1 if stack is full else -1
 	if (top==-1)
 		return 1;
-	else 
+	else
 		return -1;
 }
 
@@ -46,23 +46,28 @@ void pop()
 }
 
 int main()
-{ 
-	int ch;
-	do while
-	{
-		printf("\tMENU\n1.PUSH\n2.POP\n3.PEEK\n4.EXIT\n");
-		printf("\tenter your choice\n");
-		scanf("%d",&ch);
-		switch(ch)
-		{
-			case 1:push();
-			       break;
-			case 2:pop();
-			       break();
-			case 3:peek();
-			       break;
-		}
-		
+{
+    int ch,e;
+    do
+    {
+        printf("\n\tMENU\n1.PEEK\n2.POP\n3.PUSH\n4.EXIT\nEnter your choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:printf("the topmost element is:%d",peek());
+                   break;
+            case 2:pop();
+                   break;
+            case 3:printf("\nenter the element to be pushed:");
+                   scanf("%d",&e);
+                   push(e);
+                   break;
+            case 4:return 0;
+        }
+    }while(1);
+    return 0;
+}
+
 
 
 
