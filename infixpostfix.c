@@ -1,54 +1,56 @@
 #include <stdio.h>
-#include <ctype.>
+#include <ctype.h>
 typedef struct conversion
 {
 	char a[30];
-	int top=-1;
+	int top;
 }stack;
-stack s;
 
-void push(char);
+void push(char, stack *s);
 
-char pop();
+char pop(stack *s);
 
-void convert(char[],char[]);
+void convert(char[],char[],stack *s);
 
-char pop();
+int priority(char a);
 
 int main()
 {
 	char infix[30],postfix[30];
+	stack s;
+	s.top=-1;
 	printf("\nenter the infix expression\n");
 	scanf("%s",infix);
-	convert(infix,postfix);
+	convert(infix,postfix,&s);
 	printf("\n5the postfix expression is %s\n",postfix);
 	return 0;
 }
 
-void convert(char in[], char post[])
+void convert(char in[30], char post[30],stack *s)
 {
 	char opr;
-	for(int i=0,j=0;in[i]!='\0';i++)
+	int i,j;
+	for(i=0,j=0;in[i]!='\0';i++)
 	{
-		if(isalpha())
+		if(isalpha(in[i]))
 		post[j++]=in[i];
 		if(in[i]=='(')
-		push(in[i]);
+		push(in[i],s);
 		if(in[i]=='+'||in[i]=='*'||in[i]=='/'||in[i]=='-')
 		{
-			if(s.top!=-1)
+			if(s->top!=-1)
 			{
-				opr=pop();
-				while(priority(opr)>=priority(in[i])
+				opr=pop(s);
+				while(priority(opr)>=priority(in[i]))
 				{
 					post[j++]=opr;
-					opr=pop()
+					opr=pop(s);
 				}
-				push(opr);
-				push(in[i]);
+				push(opr,s);
+				push(in[i],s);
 			}
 			else
-			push(in[i]);
+			push(in[i],s);
 		}
 		if(in[i]==')')
 		{
@@ -56,11 +58,41 @@ void convert(char in[], char post[])
 			while(opr!='(')
 			{
 				post[j++]=opr;
-				opr=pop();
+				opr=pop(s);
 			}
 		}
 	}
-	while(s.top!=-1)
-	post[j++]=pop();
+	while(s->top!=-1)
+	post[j++]=pop(s);
 	post[j]='\0';
 }
+
+void push(char e, stack *s)
+{
+    int top=s->top;
+    if(top<=29)
+	{
+
+		s->a[++top]=e;
+		s->top=s->top+1;
+	}
+}
+
+char pop(stack *s)
+{
+    int top=s->top;
+    if(top!=-1)
+    {
+        s->top=s->top-1;
+		return s->a[top];
+    }
+}
+
+int priority(char a)
+{
+    if (a=='*'||a=='/')
+        return 2;
+    else if (a=='+'||a=='-')
+        return 1;
+}
+
