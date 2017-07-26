@@ -70,21 +70,21 @@ void convert(char in[30], char post[30],stack *s)
 void push(char e, stack *s)
 {
     int top=s->top;
-    if(top<=29)
+    if(top<29)
 	{
-
-		s->a[++top]=e;
-		s->top=s->top+1;
+		s->a[++(s->top)]=e;
 	}
 }
 
 char pop(stack *s)
 {
     int top=s->top;
+    int d;
     if(top!=-1)
     {
+		d=s->a[top];
         s->top=s->top-1;
-		return s->a[top];
+		return d;
     }
 }
 
@@ -94,5 +94,7 @@ int priority(char a)
         return 2;
     else if (a=='+'||a=='-')
         return 1;
+    else
+		return 0;
 }
 
