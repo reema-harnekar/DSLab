@@ -1,3 +1,2 @@
 # DSLab
-Data structure lab program
-stack implimentation using arrays
+All the programs covered in Data Structure Practicals :)
