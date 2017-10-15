@@ -1,10 +1,11 @@
 #include <math.h>
 #include <stdio.h>
-#define MAXSIZE 10
+#define MAXSIZE 5
 int queue[MAXSIZE], front=-1,rear=-1;
 
 int isfull()
-{ 
+{
+	printf("%d %d\n",front, rear);
 	return ((abs(rear-front)%(MAXSIZE-1)==1)||(abs(rear-front)%(MAXSIZE-1)==0))&&(front!=-1&&rear==-1);
 }
 
@@ -19,21 +20,20 @@ int peek()
 }
 
 void insert(int e)
-
-{ 
+{
 	if(isfull())
 		printf("QUEUE IS FULL\n");
 	else
 	{
 		if(isempty())
 			front++;
-		queue[(++rear)%MAXSIZE]=e;
+        queue[(++rear)%MAXSIZE]=e;
 		printf("ELEMENT SUCESSFULLY INSERTED\n");
 	}
 }
 
 void delete()
-{  
+{
 	if(isempty()==1)
 		printf("QUEUE IS EMPTY\n");
 	else

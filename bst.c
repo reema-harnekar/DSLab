@@ -1,4 +1,7 @@
-//program to implement Binary Search Tree
+/*
+Aim:-
+Program to implement binary search tree.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct bst
@@ -60,31 +63,6 @@ void insert(node **r, int d)
 		}
 	}
 }
-void insert(node **r, int d)
-{
-	node *temp;
-	temp=*r;
-	if(temp==NULL)
-	{
-		printf("The given number is not found\n");
-		return; 
-	}
-	else
-	{
-		if(temp->data==d)
-		{
-			if(temp->left==NULL&&temp->right==NULL)
-				free(temp);
-		}
-		else
-		{
-			if(d>temp->data)
-				delete(r->right,d);
-			else
-				delete(r->left,d);
-			
-	}
-}
 int search(node *r, int d)
 {
 	if(r==NULL)
@@ -99,17 +77,89 @@ int search(node *r, int d)
 			search(r->left,d);
 	}
 }
+
+void search_node(node **x,node*root,node**parent,int num,int*f)
+{
+	node *temp;
+	temp=root;
+	if(temp==NULL)
+		return;
+    while(temp!=NULL)
+	{
+		if(temp->data==num)
+	  {
+		*f=1;
+		*x=temp;
+		return;
+	  }
+		*parent=temp;
+		if(num>temp->data)
+			temp=temp->right;
+		else
+			temp=temp->left;
+	}
+
+}
+
+void delete(node**r,int num)
+{
+	node *temp,*parent,*xsucc,*x;
+	int f=0;
+	parent=NULL;
+	x=NULL;xsucc=NULL;
+	temp=*r;
+	search_node(&x,temp,&parent,num,&f);
+
+	if(f==0)
+	{
+		printf("\n The given no. is not found");
+		return;
+	}
+
+	if(x->left==NULL && x->right==NULL)			   //x has no child
+	{
+		if(x->data > parent->data)
+			parent->right=NULL;
+		else
+			parent->left=NULL;
+	}
+	 else if(x->left!=NULL && x->right==NULL)			//x has left child
+	{
+		if(x->data > parent->data)
+			parent->right=x->left;
+		else
+			parent->left=x->left;
+	}
+	else if (x->left==NULL && x->right!=NULL)			//x has right child
+	{
+		if(x->data > parent->data)
+			parent->right=x->right;
+		else
+			parent->left=x->right;
+	}
+	else if (x->left!=NULL && x->right!=NULL)			//x has both child
+	{
+		parent=x;
+		xsucc=x->right;
+		while(xsucc->left!=NULL)
+		{
+			parent=xsucc;
+			xsucc=xsucc->left;
+		}
+		if(xsucc->data > parent->data)
+			parent->right=NULL;
+
+		else
+			parent->left=NULL;
+		x->data=xsucc->data;
+		x=xsucc;
+	}
+	free(x);
+}
 int main()
 {
 	node *root;
 	root=NULL;
-	insert(&root,5);
-	insert(&root,6);
-	insert(&root,7);
-	traverse_inorder(root);
-	if(search(root,7))
-		printf("the number is found\n");
-	else
-		printf("numbernot found\n");
+
 	return 0;
 }

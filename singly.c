@@ -1,3 +1,8 @@
+/*
+Name:-Harnekar Reema Salahuddin
+Roll No:- 16CO02
+Description:-Implementation of singly linked list.
+*/
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -6,7 +11,7 @@ typedef struct linked_list{
 	struct linked_list *next;
 }node;
 
-void print(node *q)  
+void print(node *q)
 {
 	node *ptr;
 	ptr=q;
@@ -80,7 +85,7 @@ void del(node **q,int no)
 	int f=0;
 	node *old,*temp;
 	temp=*q;
-	
+
 	while(temp!=NULL)
 	{
 		if(temp->data==no)
@@ -88,7 +93,7 @@ void del(node **q,int no)
 			f=1;
 			if(temp==*q)
 				*q=temp->next;
-			else	
+			else
 				old->next=temp->next;
 			free(temp);
 			break;
@@ -99,10 +104,10 @@ void del(node **q,int no)
 			temp=temp->next;
 		}
 	}
-	
+
 	if(f==0)
 		printf("\nTHE GIVEN NUMBER IS NOT FOUND\n");
-	
+
 	printf("\nELEMENTS OF LINKLIST AFTER DELETION\n");
 	print(*q);
 }
@@ -177,3 +182,56 @@ int main()
 		}while(1);
 	return 0;
 }
+/*
+OUTPUT:-
+ENTER NUMBER OF NODES: 5
+
+ENTER NODE NUMBER 1: 2
+
+ENTER NODE NUMBER 2: 3
+
+ENTER NODE NUMBER 3: 12
+
+ENTER NODE NUMBER 4: 6
+
+ENTER NODE NUMBER 5: 13
+
+ENTER YOUR CHOICE
+
+1-INSERTION
+2-DELETION
+3-TRAVERSE
+4-Exit
+
+3
+
+TRAVERSING LINKLIST
+
+
+2       3       12      6       13
+
+END OF LINKLIST
+
+ENTER YOUR CHOICE
+
+1-INSERTION
+2-DELETION
+3-TRAVERSE
+4-Exit
+
+2
+
+ENTER THE NUMBER TO BE DELETED: 12
+
+ELEMENTS OF LINKLIST AFTER DELETION
+
+2       3       6       13
+ENTER YOUR CHOICE
+
+1-INSERTION
+2-DELETION
+3-TRAVERSE
+4-Exit
+
+4
+*/

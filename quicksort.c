@@ -1,3 +1,8 @@
+/*
+Name:-Harnekar Reema Salahuddin
+Roll No:- 16CO02
+Description:-Program to implement the quick sort technique.
+*/
 #include <stdio.h>
 #define MAX 100
 
@@ -41,6 +46,7 @@ int main()
 	int a[MAX],n,i;
 	printf("Enter the no of elements(max 100):\n");
 	scanf("%d",&n);
+	printf("Enter the elements::\n");
 	for(i=0;i<n;i++)
 		scanf("%d",&a[i]);
 	quicksort(a,0,n-1);
@@ -49,3 +55,16 @@ int main()
 		printf("%d ",a[i]);
 	return 0;
 }
+/*
+OUTPUT:-
+Enter the no of elements(max 100):
+5
+Enter the elements::
+3
+1
+0
+17
+65
+The sorted array is :
+0 1 3 17 65
+*/

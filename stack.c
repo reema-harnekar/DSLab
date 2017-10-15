@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAXSIZE 10
+#define MAXSIZE 5
 int stack[MAXSIZE], top=-1;
 
 int isfull()

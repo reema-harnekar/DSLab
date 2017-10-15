@@ -1,6 +1,7 @@
 /*
-Aim:
-Check continuity of different types of parentheses using stack.
+Name:Harnekar Reema Salahuddin
+Roll no:-16CO02
+Description:- Check continuity of different types of parentheses using stack.
 */
 #include <stdio.h>
 #include <ctype.h>

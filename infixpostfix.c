@@ -90,11 +90,14 @@ char pop(stack *s)
 
 int priority(char a)
 {
-    if (a=='*'||a=='/')
-        return 2;
-    else if (a=='+'||a=='-')
-        return 1;
-    else
-		return 0;
+    switch(a)
+    {
+        case '$':return 3;
+        case '*':return 2;
+        case '/':return 2;
+        case '+':return 1;
+        case '-':return 1;
+        default:return 0;
+    }
 }
 

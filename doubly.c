@@ -1,3 +1,8 @@
+/*
+Name:-Harnekar Reema Salahuddin
+Roll No:- 16CO02
+Description:-Implementation of doubly linked list.
+*/
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -7,7 +12,7 @@ typedef struct linked_list{
 	struct linked_list *prev;
 }node;
 
-void print(node *q)  
+void print(node *q)
 {
 	node *ptr;
 	ptr=q;
@@ -98,7 +103,7 @@ void del(node **q,int no)
 	int f=0;
 	node *temp;
 	temp=*q;
-	
+
 	while(temp!=NULL)
 	{
 		if(temp->data==no)
@@ -122,10 +127,10 @@ void del(node **q,int no)
 		else
 			temp=temp->next;
 	}
-	
+
 	if(f==0)
 		printf("\nTHE GIVEN NUMBER IS NOT FOUND\n");
-	
+
 	printf("\nELEMENTS OF LINKLIST AFTER DELETION\n");
 	print(*q);
 }
@@ -206,3 +211,73 @@ int main()
 	}while(1);
 	return 0;
 }
+/*
+OUTPUT:-
+ENTER NUMBER OF NODES: 3
+
+ENTER NODE NUMBER 1: 1
+
+ENTER NODE NUMBER 2: 3
+
+ENTER NODE NUMBER 3: 4
+
+ENTER YOUR CHOICE
+
+1-INSERTION
+2-DELETION
+3-TRAVERSE
+4-Exit
+
+1
+
+ENTER THE NUMBER TO BE INSERTED: 0
+
+ENTER 1 TO INSERT AT THE BEGINING
+ENTER 2 TO INSERT AT THE END
+ENTER 3 TO INSERT AT A SPECIFIED LOCATION
+1
+
+ELEMENTS OF LINKLIST AFTER INSERTION
+
+0       1       3       4
+ENTER YOUR CHOICE
+
+1-INSERTION
+2-DELETION
+3-TRAVERSE
+4-Exit
+
+1
+
+ENTER THE NUMBER TO BE INSERTED: 2
+
+ENTER 1 TO INSERT AT THE BEGINING
+ENTER 2 TO INSERT AT THE END
+ENTER 3 TO INSERT AT A SPECIFIED LOCATION
+3
+ENTER LOCATION WHERE THE NO.IS TO BE INSERTED: 3
+
+ELEMENTS OF LINKLIST AFTER INSERTION
+
+0       1       2       3       4       5
+ENTER YOUR CHOICE
+
+1-INSERTION
+2-DELETION
+3-TRAVERSE
+4-Exit
+
+2
+
+ENTER THE NUMBER TO BE DELETED: 0
+
+ELEMENTS OF LINKLIST AFTER DELETION
+
+1       2       3       4       5
+ENTER YOUR CHOICE
+
+1-INSERTION
+2-DELETION
+3-TRAVERSE
+4-Exit
+*/

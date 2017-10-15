@@ -1,6 +1,7 @@
 /*
-Aim:
-Array implementation of queues
+Name:-Harnekar Reema Salahuddin
+Roll No:- 16CO02
+Description:-Array implementation of queues.
 */
 #include <stdio.h>
 #define MAXSIZE 5
