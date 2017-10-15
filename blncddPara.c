@@ -1,3 +1,7 @@
+/*
+Aim:
+Check continuity of different types of parentheses using stack.
+*/
 #include <stdio.h>
 #include <ctype.h>
 typedef struct conversion
@@ -17,7 +21,7 @@ int isMatching(char left, char right);
 int main()
 {
 	char exp[30];
-	printf("\nenter the expression\n");
+	printf("\nEnter The Expression::\n");
 	scanf("%s",exp);
 	checkContinuity(exp);
 	return 0;
@@ -48,21 +52,21 @@ int isMatching(char left, char right)
 {
 	switch(left)
 	{
-		case '(': 
+		case '(':
 			if(right==')')
 				return 1;
 			else
-				return 0;	
-		case '{': 
+				return 0;
+		case '{':
 			if(right=='}')
 				return 1;
 			else
-				return 0;	
-		case '[': 
+				return 0;
+		case '[':
 			if(right==']')
 				return 1;
 			else
-				return 0;	
+				return 0;
 	}
 	return 0;
 }
@@ -82,7 +86,7 @@ void checkContinuity(char exp[30])
 		{
 			if(s.top==-1)
 			{
-				printf("expression is invalid\n");
+				printf("EXPRESSION INVALID\n");
 				return;
 			}
 			else{
@@ -91,14 +95,26 @@ void checkContinuity(char exp[30])
 					continue;
 				else
 				{
-					printf("expression is invalid\n");
+					printf("EXPRESSION INVALID\n");
 					return;
 				}
 			}
 		}
 	}
 	if(s.top!=-1)
-	printf("expression is invalid\n");
+	printf("EXPRESSION INVALID\n");
 	else
-	printf("expression is valid\n");
+	printf("EXPRESSION VALID\n");
 }
+/*
+OUTPUT:-
+
+Enter The Expression::
+(([{}]))[{[]{}{}}]
+EXPRESSION VALID
+
+Enter The Expression::
+{((}))[][](){}
+EXPRESSION INVALID
+
+*/
