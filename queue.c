@@ -1,5 +1,9 @@
+/*
+Aim:
+Array implementation of queues
+*/
 #include <stdio.h>
-#define MAXSIZE 10
+#define MAXSIZE 5
 int queue[MAXSIZE], front=-1,rear=-1;
 
 int isfull()
@@ -17,7 +21,7 @@ int isempty()
 
 int peek()
 {//returns the element at the top of the stack
-	printf("Front=%d",front);
+	printf("Front = %d\n",front);
 	return queue[front];
 }
 
@@ -46,7 +50,7 @@ void delete()
 			front=rear=-1;
 		else
 			front++;
-		printf("%d successfully deleted\n",d);
+		printf("%d SUCCESSFULLY DELETED\n",d);
 	}
 }
 
@@ -59,11 +63,11 @@ int main()
         scanf("%d",&ch);
         switch(ch)
         {
-            case 1:printf("element at the front of queue is:%d",peek());
+            case 1:printf("Element at the front of queue is:: %d",peek());
                    break;
             case 2:delete();
                    break;
-            case 3:printf("\nenter the element to be inserted:");
+            case 3:printf("\nEnter the element to be inserted:: ");
                    scanf("%d",&e);
                    insert(e);
                    break;
@@ -72,4 +76,98 @@ int main()
     }while(1);
     return 0;
 }
+/*
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:3
 
+Enter the element to be inserted:: 1
+ELEMENT SUCESSFULLY INSERTED
+
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:3
+
+Enter the element to be inserted:: 2
+ELEMENT SUCESSFULLY INSERTED
+
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:3
+
+Enter the element to be inserted:: 3
+ELEMENT SUCESSFULLY INSERTED
+
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:3
+
+Enter the element to be inserted:: 4
+ELEMENT SUCESSFULLY INSERTED
+
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:3
+
+Enter the element to be inserted:: 5
+ELEMENT SUCESSFULLY INSERTED
+
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:3
+
+Enter the element to be inserted:: 6
+QUEUE IS FULL
+
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:1
+Front = 0
+Element at the front of queue is:: 1
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:2
+1 SUCCESSFULLY DELETED
+
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:1
+Front = 1
+Element at the front of queue is:: 2
+        MENU
+1.PEEK
+2.DELETE
+3.INSERT
+4.EXIT
+Enter your choice:3
+
+Enter the element to be inserted:: 6
+QUEUE IS FULL
+*/
