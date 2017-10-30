@@ -1,44 +1,67 @@
-#include <math.h>
 #include <stdio.h>
 #define MAXSIZE 5
-int queue[MAXSIZE], front=-1,rear=-1;
+int Queue[MAXSIZE];
+int front=-1,rear=-1;
 
-int isfull()
+
+
+int isFull()
 {
-	printf("%d %d\n",front, rear);
-	return ((abs(rear-front)%(MAXSIZE-1)==1)||(abs(rear-front)%(MAXSIZE-1)==0))&&(front!=-1&&rear==-1);
+	return (rear==MAXSIZE-1 && front==0) || (front==rear+1);
+
 }
 
-int isempty()
+int isEmpty()
 {
-	return ((rear==-1)&&(front==-1))?1:0;
+	return (rear==-1 && front==-1);
 }
 
-int peek()
-{
-	return queue[front];
-}
+void display()
 
-void insert(int e)
 {
-	if(isfull())
-		printf("QUEUE IS FULL\n");
+	int i;
+	if(!isEmpty())
+	{
+		printf("THE ELEMENT OF QUEUE ARE:\n");
+		for(i=front;i!=rear;i=(i+1)%MAXSIZE)
+		{
+			printf("%d\t",Queue[i]);
+		}printf("%d\t",Queue[i]);
+	}
 	else
 	{
-		if(isempty())
-			front++;
-        queue[(++rear)%MAXSIZE]=e;
-		printf("ELEMENT SUCESSFULLY INSERTED\n");
+		printf("Queue is Empty");
 	}
 }
 
+void insert(int d)
+{
+	if(isFull())
+	  {
+		  printf("QUEUE IS FULL");
+		  return;
+	  }
+
+	 else
+	 {
+		rear=(rear+1)%MAXSIZE;
+		Queue[rear]=d;
+		     if(front==-1)
+		     {
+				  front++;
+			 }
+
+			printf("Element Successful Inserted");
+		}
+ }
+
 void delete()
 {
-	if(isempty()==1)
+	if(isEmpty()==1)
 		printf("QUEUE IS EMPTY\n");
 	else
 	{
-		int d=queue[front];
+		int d=Queue[front];
 		if(front==rear)
 			front=rear=-1;
 		else
@@ -47,20 +70,23 @@ void delete()
 	}
 }
 
+
+
+
 int main()
 {
     int ch,e;
     do
     {
-        printf("\n\tMENU\n1.PEEK\n2.DELETE\n3.INSERT\n4.EXIT\nEnter your choice:");
+        printf("\n\tMENU\n1.Display\n2.Delete\n3.Insert\n4.EXIT\nEnter your choice:");
         scanf("%d",&ch);
         switch(ch)
         {
-            case 1:printf("element at the front of queue is:%d",peek());
+            case 1:display();
                    break;
             case 2:delete();
                    break;
-            case 3:printf("\nenter the element to be inserted:");
+            case 3:printf("\nenter the element to be Inserted:");
                    scanf("%d",&e);
                    insert(e);
                    break;

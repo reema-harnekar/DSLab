@@ -1,79 +1,105 @@
-#include <stdio.h>
-#include <ctype.h>
+/*
+Name:Harnekar Reema Salahuddin
+Roll no:-16CO02
+Description:- Evaluation of postfix expression.
+*/
+#include<stdio.h>
+#include<ctype.h> //for isaplha() function
+
 typedef struct conversion
 {
-	int a[30];
+	char a[30];
 	int top;
 }stack;
 
-void push(int, stack *s);
+void push(stack*,char);
 
-int pop(stack *s);
+char pop(stack*);
 
-int operation(int a, int b, char opr);
+int evaluation(char post[]);
 
-int evaluate(char postfix[]);
+int operation(int n1,int n2,char opr);
 
 int main()
 {
 	char postfix[30];
-	printf("\nenter the postfix expression\n");
+	printf("\nENTER POSTFIX EXPRESSION\n");
 	scanf("%s",postfix);
-	printf("Evaluated posfix expression = %d\n",evaluate(postfix));
+	printf("\n\EVALUATION of POSTFIX EXPRESSION\n%d",evaluation(postfix));
 	return 0;
 }
 
-int pop(stack *s)
+
+
+void push(stack *s,char opr)
 {
-    int d,top=s->top;
-    if(top!=-1)
+	s->top++;
+	s->a[s->top]=opr;
+}
+
+char pop(stack *s)
+{
+	if (s->top==-1)
+	{
+		printf("stack is empty\n");
+		return 0;
+    }
+    else
     {
-		d=s->a[top];
-        s->top=s->top-1;
-		return d;
+		char data=s->a[s->top--];
+		return data;
     }
 }
 
-void push(int e, stack *s)
+int evaluation(char post[])
 {
-    int top=s->top;
-    if(top<29)
-	{
-		s->a[++(s->top)]=e;
-	}
-}
-
-int operation(int a, int b, char opr)
-{
-	switch(opr)
-	{
-		case '+': return a+b;
-		break;
-		case '-': return a-b;
-		break;
-		case '*': return a*b;
-		break;
-		case '/': return a/b;
-		break;
-	}
-	return 0;
-}
-
-int evaluate(char postfix[30])
-{
-	int i,a,b,result;
+	int n1,n2,result;
 	stack s;
-	for(i=0;postfix[i]!='\0';i++)
-	{
-		if(isdigit(postfix[i]))
-			push(postfix[i]-'0',&s);
-		else 
-		{
-			a=pop(&s);
-			b=pop(&s);
-			result=operation(a,b,postfix[i]);
-			push(result,&s);
-		}
+	int i=0;
+	s.top=-1;
+
+	 while(post[i]!='\0')
+	 {
+		if(isdigit(post[i]))
+		 push(&s,post[i]-'0');
+
+
+		 else
+		 {
+			 n1=pop(&s1);
+			 n2=pop(&s1);
+			 result=operation(n1,n2,post[i]);
+			 push(&s,result);
+
+
+			 }
+		 i++
+	 }
+
+
+
 	}
-	return pop(&s);
+
+
+
+
+
+
+
+int operation(int n1,int n2,char opr)
+{
+		switch(opr)
+	{
+
+	  case '+':return n1+n2;
+	  case '-':return n1-n2;
+	  case '*':return n1*n2;
+	  case '/':return n1/n2;
+
+
+	}
 }
+/*
+OUTPUT:-
+
+*/
